@@ -1,0 +1,39 @@
+{
+  "name": "cypress-cucumber-bdd",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "@mmisty/cypress-allure-adapter": "^0.16.4",
+    "@types/cypress-cucumber-preprocessor": "^4.0.1",
+    "date-fns": "^2.30.0",
+    "moment": "^2.30.1",
+    "rimraf": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/chai-sorted": "^0.2.0",
+    "@types/faker": "^6.6.9",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "allure-commandline": "^2.21.0",
+    "cucumber": "^6.0.7",
+    "cypress": "^13.6.4",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8",
+    "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "cy:run": "npx cypress run --env allure=true,allureResultsPath=cypress/allure-result",
+    "open": "npx cypress open",
+    "test": "npm run pst && npm run cy:run",
+    "format": "prettier --write \"cypress/**/*.ts\"",
+    "lint": "eslint \"cypress/**/*.ts\" --fix",
+    "pst": "rimraf allure-results && rimraf allure-report && rimraf cypress/screenshots && mkdir cypress/screenshots",
+    "generate-report": "npx allure generate cypress/allure-result --clean -o cypress/allure-report && allure open cypress/allure-report"
+  },
+  "author": "Quynh Le",
+  "license": "ISC",
+  "description": ""
+}
